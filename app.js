@@ -8,6 +8,9 @@ app.engine('.hbs', engine({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
 app.set('views', './views')
 
+// 呼叫所需靜態檔案
+app.use(express.static('public'))
+
 // 定義路由
 app.get('/', (req, res) => {
   res.redirect('/shortener');
