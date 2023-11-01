@@ -1,6 +1,12 @@
 const express = require('express');
+const { engine } = require('express-handlebars') //使用express-handlebars
 const app = express();
 const port = 3000; // 你可以選擇自己的伺服器端口號
+
+// 把樣板引擎交給express-handlebars
+app.engine('.hbs', engine({ extname: '.hbs' }))
+app.set('view engine', '.hbs')
+app.set('views', './views')
 
 // 定義路由
 app.get('/', (req, res) => {
@@ -8,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/shortener', (req, res) => {
-  res.send('Welcome to URL shortener!');
+  res.render('index');
 });
 
 app.get('/shortener/:id', (req, res) => {
