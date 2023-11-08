@@ -19,7 +19,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/shortener', (req, res) => {
-  let originalURL = req.query.inputOriginalURL?.trim()
+  // 例外處理：若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者
+  if (req.query.inputOriginalURL === '') {
+    // 用<script></script>包起來的是在client端執行JavaScript內容：alert彈窗，及重新導向"/shortener"路徑
+    res.send('<script>alert("未輸入內容，請檢查！"); window.location.href = "/shortener";</script>');
+    return
+  }
+
+  let originalURL = req.query.inputOriginalURL?.replace(/\s/g, '');
 
   if (originalURL) {
     // 產生id
