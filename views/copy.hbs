@@ -7,6 +7,32 @@
     <p>
       Success! Please use this link:
     <p>
-      <a href={{URL.originalURLJson}}>http://localhost:3000/shortener/{{URL.idJson}}</a>
+      <a href={{URL.originalURLJson}} id="shortenURL">http://localhost:3000/shortener/{{URL.idJson}}</a>
+      <button class="btn btn-outline-secondary" type="button" onclick="copyText()">Copy</button>
   </div>
 </div>
+
+{{!-- 複製shortenURL功能 --}}
+<script>
+  function copyText() {
+    // 取得輸入框的元素
+    const inputElement = document.getElementById('shortenURL');
+
+    // 建立選擇範圍的範圍對象
+    const range = document.createRange();
+    range.selectNode(inputElement);
+
+    // 將選擇範圍設置為剛剛建立的範圍
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    // 嘗試複製文字
+    document.execCommand('copy');
+
+    // 取消選擇文字範圍
+    window.getSelection().removeAllRanges();
+
+    // 提示用戶文字已經複製
+    alert('URL has been copied!');
+  }
+</script>
