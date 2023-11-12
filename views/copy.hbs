@@ -9,6 +9,7 @@
     <p>
       <a href={{URL.originalURLJson}} id="shortenURL">http://localhost:3000/shortener/{{URL.idJson}}</a>
       <button class="btn btn-outline-secondary" type="button" onclick="copyText()">Copy</button>
+      <button class="btn btn-outline-secondary" type="button" onclick="goToHomePage()">Back</button>
   </div>
 </div>
 
@@ -34,5 +35,11 @@
 
     // 提示用戶文字已經複製
     alert('URL has been copied!');
+  }
+
+  // 回首頁功能
+  function goToHomePage() {
+    // 使用 window.location.href 導向到首頁的 URL
+    window.location.href = '/';
   }
 </script>
