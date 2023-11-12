@@ -1,20 +1,25 @@
-<div class="container mt-5">
-  <h1>URL shortener</h1>
-  <div>
-    <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <h1 class="mb-0">URL shortener</h1>
+  <div><img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt=""
+      class="my-5">
   </div>
   <div>
     <p>
       Success! Please use this link:
     <p>
       <a href={{URL.originalURLJson}} id="shortenURL">http://localhost:3000/shortener/{{URL.idJson}}</a>
-      <button class="btn btn-outline-secondary" type="button" onclick="copyText()">Copy</button>
-      <button class="btn btn-outline-secondary" type="button" onclick="goToHomePage()">Back</button>
+
+    <div class="container d-flex flex-row justify-content-center">
+      <button class="btn btn-outline-secondary mx-1" type="button" onclick="copyText()">Copy</button>
+      <button class="btn btn-outline-secondary mx-1" type="button" onclick="goToHomePage()">Back</button>
+    </div>
+
   </div>
 </div>
+</div>
 
-{{!-- 複製shortenURL功能 --}}
 <script>
+  // 複製shortenURL功能
   function copyText() {
     // 取得輸入框的元素
     const inputElement = document.getElementById('shortenURL');
